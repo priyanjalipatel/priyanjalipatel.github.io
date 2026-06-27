@@ -1,16 +1,35 @@
-# React + Vite
+# Priyanjali Patel - AI/Data Science Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website showcasing my work in:
 
-Currently, two official plugins are available:
+- Machine Learning
+- Generative AI
+- LLM Applications
+- Data Engineering
+- Scientific Computing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Website
 
-## React Compiler
+https://priyanjalipatel.github.io/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Featured Projects
 
-## Expanding the ESLint configuration
+### EEG Seizure Detection
+Medical AI project using:
+- MNE-Python
+- CNN-BiLSTM
+- ResNet-18
+- Explainable AI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### BankEase AI Assistant
+Multi-agent financial chatbot using:
+- LangChain
+- LangGraph
+- RAG
+- SQL
+
+### Machine Learning Deployment
+End-to-end ML deployment using:
+- Flask
+- AWS
+- Docker
