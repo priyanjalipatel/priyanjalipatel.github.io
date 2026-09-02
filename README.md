@@ -14,12 +14,12 @@ https://priyanjalipatel.github.io/
 
 ## Featured Projects
 
-### EEG Seizure Detection
-Medical AI project using:
-- MNE-Python
-- CNN-BiLSTM
-- ResNet-18
-- Explainable AI
+### Wash-Trading Risk Scoring
+NFT wash-trading risk scoring with uncertainty quantification using:
+- XGBoost + bootstrap resampling
+- Isolation Forest
+- Dune Analytics (on-chain data)
+- PyMC (Bayesian uncertainty)
 
 ### BankEase AI Assistant
 Multi-agent financial chatbot using:

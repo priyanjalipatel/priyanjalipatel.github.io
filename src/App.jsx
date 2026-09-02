@@ -237,22 +237,20 @@ function App() {
   ];
   const [chatbotIndex, setChatbotIndex] = useState(0);
 
-  const eegImages = [
-    "/projects/raw_eeg_waveforms.png",
-    "/projects/psd_by_class.png",
-    "/projects/sample_spectrograms.png",
-    "/projects/gradcam_per_class.png",
-    "/projects/resnet_roc_curves.png",
-    "/projects/resnet_confusion_matrix.png",
+  const washTradingImages = [
+    "/projects/top_wallets_uncertainty.png",
+    "/projects/wash_trading_crosscheck.png",
+    "/projects/wallet_risk_breakdown.png",
+    "/projects/reciprocal_ratio_distribution.png",
   ];
-  const [eegIndex, setEegIndex] = useState(0);
+  const [washTradingIndex, setWashTradingIndex] = useState(0);
 
   useEffect(() => {
     const t1 = setInterval(() => setImgIndex(p => (p + 1) % bankImages.length), 2500);
     const t2 = setInterval(() => setGlacierIndex(p => (p + 1) % glacierImages.length), 2500);
     const t3 = setInterval(() => setQuasarIndex(p => (p + 1) % quasarImages.length), 2500);
     const t4 = setInterval(() => setChatbotIndex(p => (p + 1) % chatbotImages.length), 2500);
-    const t5 = setInterval(() => setEegIndex(p => (p + 1) % eegImages.length), 2500);
+    const t5 = setInterval(() => setWashTradingIndex(p => (p + 1) % washTradingImages.length), 2500);
     return () => { clearInterval(t1); clearInterval(t2); clearInterval(t3); clearInterval(t4); clearInterval(t5); };
   }, []);
 
@@ -413,66 +411,58 @@ function App() {
         <h2 className="text-4xl font-bold text-purple-400 mb-12 text-center">Featured Projects</h2>
         <div className="flex flex-col items-center gap-12">
 
-          {/* EEG Seizure Detection */}
+          {/* Wash-Trading Risk Scoring */}
           <div className="bg-[#111827] border border-gray-800 rounded-3xl overflow-hidden hover:border-purple-500 transition w-full max-w-5xl">
             <div className="w-full h-[450px] flex items-center justify-center bg-black/20">
               <img
-                src={eegImages[eegIndex]}
-                alt="EEG Seizure Detection"
+                src={washTradingImages[washTradingIndex]}
+                alt="Wash-Trading Risk Scoring"
                 className="max-h-full max-w-full object-contain transition-all duration-700"
               />
             </div>
             <div className="p-8">
-              <p className="text-xs text-purple-400 mb-2">Personal Project · Medical AI · Signal Processing · Domain Transfer</p>
-              <h3 className="text-3xl font-bold mb-4">EEG Seizure Detection</h3>
+              <p className="text-xs text-purple-400 mb-2">Personal Project · Web3 / Crypto Analytics · Uncertainty Quantification</p>
+              <h3 className="text-3xl font-bold mb-4">Wash-Trading Risk Scoring</h3>
               <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                Automatic EEG-based seizure detection across 5 classes (seizure, tumour region, healthy, eyes closed/open)
-                using 11,500 EEG epochs from the UCI Epileptic Seizure Recognition Dataset.
+                An NFT wash-trading risk-scoring model built entirely on public on-chain data (Dune Analytics, free tier).
+                Flags wallets likely engaged in wash trading on an NFT collection — reciprocal trades, tight timing,
+                concentrated counterparties — from trade history alone.
                 <br /><br />
                 <span className="text-gray-300">
-                  The core insight: Welch PSD, frequency-band decomposition, and stochastic signal characterisation
-                  developed during my PhD for quasar light curves transfer directly to neurophysiological signals.
-                  Built a full pipeline from handcrafted spectral features through to ResNet-18 transfer learning on
-                  STFT spectrograms with Grad-CAM interpretability.
+                  Unlike a typical anomaly-detection portfolio project, it never reports a single confident score. There's no
+                  ground-truth label for "this wallet is washing trades" — only a heuristic one — so every wallet gets a
+                  bootstrap mean probability with a 90% interval (200 XGBoost resamples) plus a separate label-free Isolation
+                  Forest score as a cross-check. A wallet is only <span className="text-purple-300 font-semibold">high-confidence</span> if
+                  the pessimistic end of its interval still clears 0.5.
                 </span>
               </p>
 
               <div className="bg-[#0b1220] border border-gray-800 rounded-2xl p-5 mb-6 text-sm text-gray-300">
-                <p className="text-purple-400 mb-3">Results:</p>
+                <p className="text-purple-400 mb-3">Results (synthetic demo, 412 wallets):</p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs text-left border-collapse">
                     <thead>
                       <tr className="text-gray-500 border-b border-gray-700">
-                        <th className="pb-2 pr-4">Model</th>
-                        <th className="pb-2 pr-4">Accuracy</th>
-                        <th className="pb-2 pr-4">Macro F1</th>
-                        <th className="pb-2">Seizure Sensitivity</th>
+                        <th className="pb-2 pr-4">Metric</th>
+                        <th className="pb-2">Value</th>
                       </tr>
                     </thead>
-                    <tbody className="space-y-1">
+                    <tbody>
                       <tr className="border-b border-gray-800">
-                        <td className="py-1.5 pr-4">Random Forest</td>
-                        <td className="py-1.5 pr-4">80.9%</td>
-                        <td className="py-1.5 pr-4">0.808</td>
-                        <td className="py-1.5">~98%</td>
+                        <td className="py-1.5 pr-4">High-confidence wallets flagged</td>
+                        <td className="py-1.5">10 / 412</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-1.5 pr-4">XGBoost</td>
-                        <td className="py-1.5 pr-4">82.0%</td>
-                        <td className="py-1.5 pr-4">0.819</td>
-                        <td className="py-1.5">~98%</td>
+                        <td className="py-1.5 pr-4">Flagged-uncertain (needs human look)</td>
+                        <td className="py-1.5">2 / 412</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-1.5 pr-4">1D CNN + BiLSTM</td>
-                        <td className="py-1.5 pr-4">80.1%</td>
-                        <td className="py-1.5 pr-4">0.793</td>
-                        <td className="py-1.5 text-purple-300 font-semibold">99.4%</td>
+                        <td className="py-1.5 pr-4">Recall on injected wash rings (known ground truth)</td>
+                        <td className="py-1.5 text-purple-300 font-semibold">83.3% high-confidence</td>
                       </tr>
                       <tr>
-                        <td className="py-1.5 pr-4 text-white font-semibold">ResNet-18 (spectrogram)</td>
-                        <td className="py-1.5 pr-4 text-white font-semibold">84.1%</td>
-                        <td className="py-1.5 pr-4 text-white font-semibold">0.840</td>
-                        <td className="py-1.5">98.8%</td>
+                        <td className="py-1.5 pr-4 text-white font-semibold">Avg. precision vs. weak labels</td>
+                        <td className="py-1.5 text-white font-semibold">1.0</td>
                       </tr>
                     </tbody>
                   </table>
@@ -482,21 +472,21 @@ function App() {
               <div className="bg-[#0b1220] border border-gray-800 rounded-2xl p-5 mb-6 text-sm text-gray-300">
                 <p className="text-purple-400 mb-2">Key Contributions:</p>
                 <ul className="list-disc ml-5 space-y-1">
-                  <li>24-feature spectral engineering: Welch PSD band powers, Hjorth parameters, statistical moments</li>
-                  <li>1D CNN + BiLSTM classifier on raw EEG waveforms (99.4% seizure sensitivity)</li>
-                  <li>ResNet-18 transfer learning on STFT spectrograms with SpecAugment regularisation</li>
-                  <li>Grad-CAM saliency maps on layer4 for clinical interpretability</li>
-                  <li>Staged unfreezing + early stopping to prevent overfitting (AUC 0.977)</li>
+                  <li>Full Dune SQL → feature engineering → model pipeline on public on-chain trade data</li>
+                  <li>Per-wallet uncertainty via 200 bootstrap XGBoost resamples, not a single point score</li>
+                  <li>Label-free Isolation Forest cross-check against the supervised, weak-labeled model</li>
+                  <li>Weak label (reciprocal ratio) deliberately excluded from model features to avoid circularity</li>
+                  <li>Optional Bayesian logistic regression (PyMC) for a proper per-wallet posterior + coefficient effects</li>
                 </ul>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {["PyTorch", "ResNet-18", "CNN + BiLSTM", "Signal Processing", "Grad-CAM", "XGBoost", "STFT", "Transfer Learning", "Medical AI"].map(t => (
+                {["XGBoost", "Isolation Forest", "Bootstrap Uncertainty", "PyMC / Bayesian", "Dune Analytics", "On-Chain Data", "NFT / Web3"].map(t => (
                   <span key={t} className="bg-purple-600/20 px-3 py-1 text-sm rounded-full">{t}</span>
                 ))}
               </div>
 
-              <a href="https://github.com/priyanjalipatel/eeg-seizure-detection" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/priyanjalipatel/wash-trading-risk-scoring" target="_blank" rel="noopener noreferrer">
                 <button className="border border-purple-500 text-purple-400 px-5 py-2 rounded-xl hover:bg-purple-600 hover:text-white transition text-sm">
                   GitHub Repository
                 </button>
