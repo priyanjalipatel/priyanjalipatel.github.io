@@ -1,64 +1,57 @@
 \documentclass[9pt]{extarticle}
 
 % ---------- Page geometry ----------
-\usepackage[letterpaper, left=0.38in, right=0.38in, top=0.3in, bottom=0.3in]{geometry}
+\usepackage[letterpaper, left=0.42in, right=0.42in, top=0.32in, bottom=0.32in]{geometry}
 
-% ---------- Fonts ----------
+% ---------- Fonts (default LaTeX serif -- Latin Modern) ----------
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
 
 % ---------- Color, links, layout tools ----------
 \usepackage{xcolor}
-\definecolor{accent}{HTML}{4C1D95}
-\definecolor{tagbg}{HTML}{F4ECFE}
-\definecolor{tagborder}{HTML}{DDC9F7}
-\definecolor{muted}{HTML}{555555}
-\definecolor{award}{HTML}{B8860B}
+\definecolor{accent}{HTML}{033568}
+\definecolor{muted}{HTML}{444444}
 
 \usepackage[colorlinks=true, linkcolor=accent, urlcolor=accent, pdftitle={Priyanjali Patel Resume}, pdfauthor={Priyanjali Patel}]{hyperref}
 \usepackage{paracol}
 \usepackage{enumitem}
-\usepackage{tcolorbox}
-\tcbuselibrary{skins}
 \usepackage{titlesec}
 \usepackage{ragged2e}
-\usepackage{setspace}
 \setlength{\parindent}{0pt}
-\setlength{\columnsep}{0.26in}
+\setlength{\columnsep}{0.28in}
 \pagestyle{empty}
 
-% ---------- Section heading (thin rule underneath, small caps, accent color) ----------
-\titleformat{\section}{\bfseries\color{accent}\fontsize{8.8}{10.2}\selectfont}{}{0pt}{}[\vspace{2pt}{\color{accent}\hrule height 0.9pt}\vspace{3pt}]
-\titlespacing*{\section}{0pt}{5pt}{1.5pt}
+% ---------- Section heading: bold caps, accent color, thin rule below ----------
+\titleformat{\section}{\bfseries\color{accent}\fontsize{10}{12}\selectfont}{}{0pt}{}[\vspace{2pt}{\color{accent}\hrule height 0.8pt}\vspace{3pt}]
+\titlespacing*{\section}{0pt}{6pt}{2pt}
 
-\newcommand{\sidehead}[1]{{\bfseries\color{accent}\fontsize{7.4}{9}\selectfont #1}\\[-2pt]{\color{accent}\hrule height 0.8pt}\vspace{3pt}}
+% First skills sub-category: small caps, accent color (no rule)
+\newcommand{\skillhead}[1]{{\scshape\color{accent}\fontsize{8.4}{10}\selectfont #1}\par\vspace{2pt}}
+% Subsequent skills sub-categories: plain bold black
+\newcommand{\skillsub}[1]{{\bfseries\fontsize{8.2}{9.8}\selectfont #1}\par\vspace{2pt}}
 
 % ---------- Job / project entry helpers ----------
 \newcommand{\jobtitle}[2]{%
-  \noindent{\bfseries\fontsize{8.6}{10.2}\selectfont #1}\hfill{\color{muted}\fontsize{7.4}{9}\selectfont #2}\par}
-\newcommand{\jobrole}[1]{{\itshape\color[HTML]{333333}\fontsize{8.0}{9.8}\selectfont #1}\par\vspace{0.5pt}}
-\newcommand{\jobdata}[1]{{\itshape\color[HTML]{666666}\fontsize{7.0}{8.7}\selectfont #1}\par\vspace{1.5pt}}
+  \noindent{\bfseries\fontsize{9.3}{11}\selectfont #1}\hfill{\bfseries\fontsize{8.6}{10.4}\selectfont #2}\par}
+\newcommand{\jobrole}[1]{{\itshape\fontsize{8.6}{10.4}\selectfont #1}\par\vspace{0.5pt}}
+\newcommand{\jobdata}[1]{{\itshape\color[HTML]{555555}\fontsize{7.6}{9.3}\selectfont #1}\par\vspace{1.5pt}}
 
 \newlist{bullets}{itemize}{1}
-\setlist[bullets]{leftmargin=9pt, itemsep=1pt, topsep=0.5pt, parsep=0pt, label=\textbullet, font=\color{black}, itemindent=0pt}
+\setlist[bullets]{leftmargin=10pt, itemsep=1.3pt, topsep=1pt, parsep=0pt, label=\textbullet, itemindent=0pt}
 
-% ---------- Skill tag chip ----------
-\newtcbox{\tag}{on line, arc=5pt, colback=tagbg, colframe=tagborder, boxrule=0.5pt,
-  top=1.1pt, bottom=1.1pt, left=4.5pt, right=4.5pt, fontupper=\color{accent}\fontsize{7.0}{8.4}\selectfont, boxsep=0pt}
-\newcommand{\tags}[1]{{\raggedright\noindent#1\par}\vspace{3pt}}
+\newlist{skills}{itemize}{1}
+\setlist[skills]{leftmargin=9pt, itemsep=1.3pt, topsep=0.5pt, parsep=0pt, label=\textbullet, itemindent=0pt}
 
 \begin{document}
 \raggedbottom
 \justifying
-\fontsize{7.9}{10.1}\selectfont
+\fontsize{8.7}{10.6}\selectfont
 
 % ================= HEADER =================
 \begin{center}
-  {\color{accent}\fontsize{22}{24}\selectfont\bfseries Priyanjali Patel}\\[2pt]
-  {\fontsize{10.5}{13}\selectfont\bfseries Data Scientist | GenAI, LLM \& RAG}\\[3pt]
-  {\fontsize{8.4}{11}\selectfont
+  {\fontsize{22}{24}\selectfont\bfseries Priyanjali Patel}\\[2pt]
+  {\color{accent}\fontsize{10.5}{13}\selectfont Data Scientist | GenAI, LLM \& RAG}\\[3pt]
+  {\fontsize{8.6}{11}\selectfont
     Bhilai, India ~|~ +91 89826 52468 ~|~
     \href{mailto:priyanjalipatel@gmail.com}{priyanjalipatel@gmail.com} ~|~
     \href{https://linkedin.com/in/priyanjalipatel}{LinkedIn} ~|~
@@ -66,21 +59,24 @@
     \href{https://github.com/priyanjalipatel}{Github} ~|~
     \href{https://scholar.google.com/citations?user=Ola1DfwAAAAJ}{Google Scholar}}
 \end{center}
-\vspace{3pt}
+\vspace{4pt}
+\noindent{\color{accent}\rule{\textwidth}{1.1pt}}
+\vspace{6pt}
 
 % ================= PAGE 1: two-column layout =================
-\columnratio{0.72}
+\columnratio{0.71}
 \begin{paracol}{2}
 
 \section*{Professional Summary}
-Data Scientist with hands-on experience building GenAI applications --- Retrieval-Augmented Generation (RAG)
-pipelines, multi-agent LLM workflows, and LLM-powered multimodal/clinical NLP systems --- alongside deep
-learning work in computer vision (CNN/U-Net segmentation) and sequence modelling (DNN/LSTM), using OpenAI GPT,
-Gemini, and GROQ-hosted LLMs with LangChain and LangGraph. PhD-trained with 5+ years in data science and 1 year
-turning multimodal data (text, tabular, time-series, image) into production-ready analytical and AI systems.
-Experienced integrating LLMs with REST APIs, SQL databases, and FastAPI/Streamlit applications; skilled in
-prompt engineering, vector search, and multi-agent orchestration, translating complex model outputs into
-business-ready outcomes for cross-functional, multicultural stakeholders.
+\textbf{Data Scientist} with hands-on experience building \textbf{GenAI applications} --- Retrieval-Augmented
+Generation (RAG) pipelines, multi-agent LLM workflows, and LLM-powered multimodal/clinical NLP
+systems --- alongside deep learning work in computer vision (CNN/U-Net segmentation) and sequence
+modelling (DNN/LSTM), using \textbf{OpenAI GPT, Gemini, and GROQ-hosted LLMs} with \textbf{LangChain and LangGraph}.
+PhD-trained with 5+ years in data science and 1 year turning multimodal data (text, tabular, time-series,
+image) into production-ready analytical and AI systems. Experienced integrating LLMs with REST APIs,
+SQL databases, and FastAPI/Streamlit applications; skilled in \textbf{prompt engineering, vector search, and
+multi-agent orchestration}, translating complex model outputs into business-ready outcomes for
+cross-functional, multicultural stakeholders.
 
 \section*{Work Experience}
 
@@ -88,69 +84,89 @@ business-ready outcomes for cross-functional, multicultural stakeholders.
 \jobrole{Data Science Intern \textperiodcentered\ Remote, Noida West, India}
 \jobdata{[Data: Multimodal (medical images: MRI, CT, X-ray, ECG, ultrasound, histopathology) | Text (clinical NLP) | Tabular (health records) | Time-series (clinical sequences)]}
 \begin{bullets}
-  \item Built a Medical Visual Question Answering (VQA) system using the Gemini multimodal model (3.6 Flash) for AI-assisted interpretation across seven clinical imaging modalities; designed prompt-engineered extraction templates that pull diagnoses, symptoms, and treatment plans as structured tables from unstructured clinical notes.
-  \item Built ChatRIA, a Retrieval-Augmented Generation (RAG) assistant for pharmaceutical regulatory Q\&A: parsed and chunked FDA drug-label PDFs (LangChain), embedded content with OpenAI embeddings into a FAISS store, and used MMR retrieval with GPT-4o for structured, source-cited answers; deployed via Streamlit.
-  \item Applied ML/DL models (Logistic Regression, DNN, LSTM on sequential clinical time-series) for predictive insights; exposed LLM and analytical outputs via Streamlit dashboards integrated with REST APIs for real-time clinical decision support.
+  \item Built \textbf{Medical Visual Question Answering (VQA) system} using \textbf{Gemini multimodal model (3.6 Flash)} for AI-assisted interpretation across seven clinical imaging modalities; designed prompt-engineered extraction templates that pull diagnoses, symptoms, and treatment plans as structured tables from unstructured clinical notes.
+  \item Built \textbf{ChatRIA}, a \textbf{Retrieval-Augmented Generation (RAG)} assistant for pharmaceutical regulatory Q\&A: parsed and chunked FDA drug-label PDFs using \textbf{LangChain}, embedded content with \textbf{OpenAI embeddings} into a \textbf{FAISS vector store}, and used \textbf{MMR retrieval} with \textbf{GPT-4o} to generate structured, source-cited answers; deployed via a \textbf{Streamlit} interface.
+  \item Applied ML/DL models (Logistic Regression, DNN, LSTM on \textbf{sequential clinical time-series}) for predictive insights; exposed LLM and analytical outputs via \textbf{Streamlit dashboards integrated with REST APIs} for real-time clinical decision support.
 \end{bullets}
 \vspace{3pt}
 
 \jobtitle{MERCOR}{05/2026 -- 06/2026}
 \jobrole{Computational PhD (Contractor) \textperiodcentered\ Freelance, Remote (Physics)}
 \begin{bullets}
-  \item Contracted via Mercor as a computational-physics contributor, working on AI-related project work for a Mercor client.
+  \item Contracted via Mercor as a \textbf{computational-physics contributor}, working on AI-related project work for a Mercor client.
 \end{bullets}
 \vspace{3pt}
 
 \jobtitle{Collaborative Project -- ML-based Fraud Detection}{11/2025 -- 01/2026}
 \jobdata{[Data: Structured tabular (imbalanced financial transaction records)]}
 \begin{bullets}
-  \item Built a fraud detection classifier (XGBoost) on imbalanced tabular transaction data; evaluated via ROC-AUC and precision-recall AUC, translating threshold trade-offs into business-aligned risk recommendations.
+  \item Analysed \textbf{imbalanced tabular financial transaction data} to build a fraud detection classifier (\textbf{XGBoost}); translated precision-recall trade-offs into actionable threshold recommendations aligned with business risk tolerance.
 \end{bullets}
 
 \section*{Personal Projects}
 
-\jobtitle{Wash-Trading Risk Scoring}{\color{accent}\scriptsize\bfseries Web3 / Crypto Analytics \textperiodcentered\ Uncertainty Quantification}
+\jobtitle{Wash-Trading Risk Scoring}{\color{accent}\scriptsize\bfseries Web3 / Crypto Analytics}
 \jobdata{[Data: On-chain NFT trade history (Dune Analytics, public)]}
 \begin{bullets}
-  \item Built an NFT wash-trading risk-scoring model on public on-chain data; engineered features from reciprocal trades, tight timing, and counterparty concentration to flag suspicious wallets without ground-truth labels.
-  \item Quantified per-wallet uncertainty via bootstrap-resampled XGBoost (200 resamples, 90\% intervals), cross-checked against a label-free Isolation Forest; recovered 83.3\% of injected wash-trading rings at high confidence.
+  \item Built an \textbf{NFT wash-trading risk-scoring model} on public on-chain data; engineered features from \textbf{reciprocal trades}, tight timing, and counterparty concentration to flag suspicious wallets without ground-truth labels.
+  \item Quantified per-wallet uncertainty via \textbf{bootstrap-resampled XGBoost} (200 resamples, 90\% intervals), cross-checked against a \textbf{label-free Isolation Forest}; recovered \textbf{83.3\%} of injected wash-trading rings at high confidence.
 \end{bullets}
-{\color{accent}\fontsize{7.4}{9}\selectfont \href{https://github.com/priyanjalipatel/wash-trading-risk-scoring}{github.com/priyanjalipatel/wash-trading-risk-scoring}}\par
+{\color{accent}\fontsize{7.6}{9.2}\selectfont \href{https://github.com/priyanjalipatel/wash-trading-risk-scoring}{github.com/priyanjalipatel/wash-trading-risk-scoring}}\par
 \vspace{3pt}
 
-\jobtitle{Glacier Segmentation with U-Net}{\color{accent}\scriptsize\bfseries Deep Learning \textperiodcentered\ Computer Vision \textperiodcentered\ Remote Sensing}
+\jobtitle{Glacier Segmentation with U-Net}{\color{accent}\scriptsize\bfseries Deep Learning / Computer Vision}
 \jobdata{[Data: Synthetic multi-band satellite imagery]}
 \begin{bullets}
-  \item Extended the U-Net segmentation work from Omdena into a standalone, open-sourced PyTorch pipeline --- patch-based dataset generation, multi-band preprocessing, and Dice-loss training --- to practise the full deep learning workflow independently, end to end.
+  \item Extended the \textbf{U-Net segmentation} work from Omdena into a standalone, open-sourced \textbf{PyTorch} pipeline --- patch-based dataset generation, multi-band preprocessing, and \textbf{Dice-loss training} --- to practise the full deep learning workflow independently, end to end.
 \end{bullets}
-{\color{accent}\fontsize{7.4}{9}\selectfont \href{https://github.com/priyanjalipatel/glacier-segmentation-unet}{github.com/priyanjalipatel/glacier-segmentation-unet}}\par
+{\color{accent}\fontsize{7.6}{9.2}\selectfont \href{https://github.com/priyanjalipatel/glacier-segmentation-unet}{github.com/priyanjalipatel/glacier-segmentation-unet}}\par
 
 \switchcolumn
 
-\sidehead{TECHNICAL SKILLS}
+\section*{Technical Skills}
 
-\sidehead{GenAI, LLM \& Agentic AI}
-\tags{%
-  \tag{OpenAI GPT} \tag{Gemini Pro Vision} \tag{GROQ} \tag{LangChain} \tag{LangGraph} \tag{CrewAI} \tag{RAG} \tag{Vector Search} \tag{FAISS} \tag{Prompt Engineering} \tag{Multi-Agent Workflows} \tag{Tool Calling} \tag{Hugging Face} \tag{Transformers (built GPT from scratch)}}
+\skillhead{GenAI, LLM \& Agentic AI}
+\begin{skills}
+  \item LLM APIs: OpenAI GPT, Gemini Pro Vision, GROQ
+  \item LangChain, LangGraph, CrewAI
+  \item Retrieval-Augmented Generation (RAG)
+  \item Vector Search \& Embeddings (FAISS)
+  \item Prompt Engineering, Multi-Agent Workflows
+  \item Tool Calling, LLM-based NLP Pipelines
+  \item Hugging Face, Transformer Architectures (built GPT from scratch)
+\end{skills}
 
-\sidehead{Machine Learning \& Deep Learning}
-\tags{%
-  \tag{CNNs} \tag{U-Net} \tag{Computer Vision} \tag{DNN} \tag{LSTM} \tag{XGBoost} \tag{Random Forest} \tag{Gradient Boosting} \tag{Isolation Forest} \tag{Anomaly Detection} \tag{Bootstrap Resampling} \tag{Uncertainty Quantification} \tag{PyMC / Bayesian}}
+\skillsub{Machine Learning \& Deep Learning}
+\begin{skills}
+  \item CNNs, U-Net (Computer Vision / Semantic Segmentation)
+  \item DNN, LSTM (Sequence Modelling)
+  \item XGBoost, Random Forest, Gradient Boosting
+  \item Isolation Forest, Anomaly Detection
+  \item Bootstrap Resampling \& Uncertainty Quantification
+  \item PyMC (Bayesian Modelling)
+\end{skills}
 
-\sidehead{Languages \& Backend}
-\tags{%
-  \tag{Python} \tag{Pandas} \tag{NumPy} \tag{scikit-learn} \tag{PyTorch} \tag{SQL} \tag{R (basic)} \tag{FastAPI} \tag{REST APIs} \tag{PySpark} \tag{Databricks}}
+\skillsub{Languages \& Backend}
+\begin{skills}
+  \item Python (Pandas, NumPy, scikit-learn, PyTorch)
+  \item SQL (Intermediate), R (basic)
+  \item FastAPI; REST API Integration
+  \item PySpark, Databricks
+\end{skills}
 
-\sidehead{Cloud \& MLOps}
-\tags{%
-  \tag{AWS S3} \tag{EC2} \tag{SageMaker} \tag{Docker} \tag{Git} \tag{Agile}}
+\skillsub{Cloud \& MLOps}
+\begin{skills}
+  \item AWS (S3, EC2, SageMaker)
+  \item Docker
+  \item Git, Agile Methodology
+\end{skills}
 
 \end{paracol}
 
 \clearpage
 
 % ================= PAGE 2: two-column layout =================
-\columnratio{0.72}
+\columnratio{0.71}
 \begin{paracol}{2}
 
 \section*{Work Experience (cont'd)}
@@ -159,8 +175,8 @@ business-ready outcomes for cross-functional, multicultural stakeholders.
 \jobrole{Machine Learning Engineer (Volunteer) \textperiodcentered\ Remote, Palo Alto, USA}
 \jobdata{[Data: Image (multi-band Landsat satellite imagery) | Text (financial documents, PDFs, queries) | Structured relational (SQL)]}
 \begin{bullets}
-  \item \textbf{Designed, trained, and evaluated a U-Net convolutional neural network (PyTorch) for pixel-wise glacier segmentation on multi-band Landsat satellite imagery} --- building the deep learning pipeline end-to-end (patch-based dataset generation, multi-band preprocessing, Dice loss to handle severe foreground/background class imbalance) and reaching a validation Dice coefficient of \textasciitilde0.82.
-  \item Designed and built a multi-agent Retrieval-Augmented Generation (RAG) + SQL chatbot using GROQ-hosted LLMs for an AI banking platform, orchestrating retrieval over unstructured financial text with tool-calling into structured transactional data; led the chatbot team's agent-workflow design, contributed to Fraud Model integration, and delivered data-driven insights through automated analytics workflows.
+  \item \textbf{Designed, trained, and evaluated a U-Net convolutional neural network (PyTorch)} for pixel-wise glacier segmentation on multi-band Landsat satellite imagery --- building the deep learning pipeline end-to-end (patch-based dataset generation, multi-band preprocessing, \textbf{Dice loss} to handle severe foreground/background class imbalance) and reaching a \textbf{validation Dice coefficient of \textasciitilde0.82}.
+  \item Designed and built a \textbf{multi-agent Retrieval-Augmented Generation (RAG) + SQL chatbot} using \textbf{GROQ-hosted LLMs} for an AI banking platform, orchestrating retrieval over unstructured financial text with \textbf{tool-calling} into structured transactional data; led the chatbot team's \textbf{agent-workflow design}, contributed to Fraud Model integration, and delivered data-driven insights through automated analytics workflows.
 \end{bullets}
 \vspace{3pt}
 
@@ -168,7 +184,7 @@ business-ready outcomes for cross-functional, multicultural stakeholders.
 \jobrole{Data Scientist Intern \textperiodcentered\ Remote, Prayagraj, India}
 \jobdata{[Data: Structured tabular (customer banking records --- demographic \& behavioural features)]}
 \begin{bullets}
-  \item Built classification models (Logistic Regression, Random Forest, Gradient Boosting) predicting term deposit subscriptions for a BFSI marketing campaign; achieved ROC-AUC of 0.92 via SMOTE class balancing and validated outputs through confusion-matrix / classification-report analysis.
+  \item Built classification models (Logistic Regression, Random Forest, Gradient Boosting) predicting term deposit subscriptions for a BFSI marketing campaign; achieved \textbf{ROC-AUC of 0.92} via \textbf{SMOTE class balancing} and validated outputs through confusion-matrix / classification-report analysis.
 \end{bullets}
 \vspace{3pt}
 
@@ -176,7 +192,7 @@ business-ready outcomes for cross-functional, multicultural stakeholders.
 \jobrole{Data Engineer \textperiodcentered\ Remote, London, UK}
 \jobdata{[Data: Text (unstructured source code \& technical documentation for LLM-based refactoring)]}
 \begin{bullets}
-  \item Selected for the competitive S2DS Fellowship; built scalable ETL pipelines to extract and transform unstructured code and technical documentation using LangChain and OpenAI GPT APIs for LLM-based automated code refactoring in an Agile team for a global HPC leader.
+  \item Selected for the competitive S2DS Fellowship; built scalable \textbf{ETL pipelines} to extract and transform unstructured code and technical documentation using \textbf{LangChain and OpenAI GPT APIs} for \textbf{LLM-based automated code refactoring} in an Agile team for a global HPC leader.
 \end{bullets}
 \vspace{3pt}
 
@@ -184,10 +200,10 @@ business-ready outcomes for cross-functional, multicultural stakeholders.
 \jobrole{Doctoral Researcher \textperiodcentered\ Santiago, Chile}
 \jobdata{[Data: Time-series (large-scale multi-wavelength photometric survey, \textasciitilde7,000 astronomical objects)]}
 \begin{bullets}
-  \item Calculated quasar optical variability using C code (Mexican Hat code), identifying and fixing a critical error to enhance short-timescale variability detection.
-  \item Conducted analysis of quasar optical variability using Python and advanced statistical techniques: retrieved and processed large-scale time-series data (light curves) for \textasciitilde7,000 quasars via APIs from the Zwicky Transient Facility (ZTF) survey; applied statistical modelling (\textbf{bootstrapping with 1,000 samples}, \textbf{regression analysis}).
-  \item Applied Bayesian inference / Markov Chain Monte Carlo (MCMC) techniques for parameter estimation, uncertainty quantification, and extracting insights from complex, noisy time-series datasets.
-  \item Developed Python-based data analysis pipelines for the ALeRCE ML collaboration, improving processing efficiency by 15\%; performed quality filtering of time-series data for ML-ready astronomical datasets.
+  \item Calculated quasar optical variability using \textbf{C code (Mexican Hat code)}, identifying and fixing a critical error to enhance short-timescale variability detection.
+  \item Conducted analysis of quasar optical variability using Python and advanced statistical techniques: retrieved and processed large-scale time-series data (light curves) for \textasciitilde7,000 quasars via APIs from the \textbf{Zwicky Transient Facility (ZTF)} survey; applied statistical modelling (\textbf{bootstrapping with 1,000 samples}, \textbf{regression analysis}).
+  \item Applied \textbf{Bayesian inference / Markov Chain Monte Carlo (MCMC)} techniques for parameter estimation, uncertainty quantification, and extracting insights from complex, noisy time-series datasets.
+  \item Developed Python-based \textbf{data analysis pipelines} for the \textbf{ALeRCE ML collaboration}, improving processing efficiency by \textbf{15\%}; performed quality filtering of time-series data for ML-ready astronomical datasets.
   \item Contributed as a co-author to two scientific papers, involving text review and preliminary investigations of light curves.
   \item Delivered presentations on research findings at scientific conferences, both locally and internationally.
 \end{bullets}
@@ -200,44 +216,56 @@ business-ready outcomes for cross-functional, multicultural stakeholders.
 \end{bullets}
 
 \section*{Publications}
-\textbf{P. Patel et al.}, Probing the rest-frame wavelength dependence of quasar variability, A\&A, 695, A162 (2025).\par\vspace{3pt}
-\textbf{P. Ar\'evalo et al.}, Universal power spectrum of quasars in optical wavelengths, A\&A, 684, A133 (2024).\par\vspace{3pt}
-\textbf{P. Ar\'evalo et al.}, Optical variability in quasars: scalings with BH mass and Eddington ratio, MNRAS, 526, 6078 (2023).\par
+P. Patel et al., \textit{Probing the rest-frame wavelength dependence of quasar variability}, A\&A, 695, A162 (2025).\par\vspace{3pt}
+P. Ar\'evalo et al., \textit{Universal power spectrum of quasars in optical wavelengths}, A\&A, 684, A133 (2024).\par\vspace{3pt}
+P. Ar\'evalo et al., \textit{Optical variability in quasars: scalings with BH mass and Eddington ratio}, MNRAS, 526, 6078 (2023).\par
 
 \switchcolumn
 
-\sidehead{Data Analysis \& Statistics}
-\tags{%
-  \tag{EDA} \tag{Data Cleaning \& Wrangling} \tag{Statistical Modelling} \tag{Hypothesis Testing} \tag{A/B Testing} \tag{Regression Analysis} \tag{Time-Series Analysis} \tag{Bayesian Modelling} \tag{MCMC} \tag{On-Chain / Web3 Data (Dune Analytics)}}
+\skillhead{Data Analysis \& Statistics}
+\begin{skills}
+  \item EDA, Data Cleaning \& Wrangling
+  \item Statistical Modelling
+  \item Hypothesis Testing, A/B Testing
+  \item Regression \& Time-Series Analysis
+  \item Bayesian Modelling, MCMC
+  \item On-Chain / Web3 Data (Dune Analytics)
+\end{skills}
 
-\sidehead{Visualization \& Reporting}
-\tags{%
-  \tag{matplotlib} \tag{seaborn} \tag{Plotly} \tag{Streamlit} \tag{Dashboards} \tag{KPI Reporting}}
+\skillsub{Visualization \& Reporting}
+\begin{skills}
+  \item matplotlib, seaborn, Plotly
+  \item Streamlit (interactive AI apps)
+  \item Business Dashboard \& KPI Reporting
+\end{skills}
 
-\sidehead{Soft Skills}
-\tags{%
-  \tag{Stakeholder Communication} \tag{Cross-functional Collaboration} \tag{Data-Driven Decision Making}}
+\skillsub{Soft Skills}
+\begin{skills}
+  \item Stakeholder Communication
+  \item Cross-functional Collaboration
+  \item Data-Driven Decision Making
+\end{skills}
 
-\sidehead{Education}
-\textbf{\fontsize{8}{10}\selectfont Ph.D. in Astrophysics}\par
-{\color{accent}\fontsize{7.6}{9.5}\selectfont Universidad de Chile}\par
-{\color{muted}\fontsize{7.4}{9}\selectfont Santiago, Chile | 2019--2024}\par
-{\color{award}\fontsize{7.4}{9}\selectfont ANID National Fellowship Recipient}\par
-\vspace{3pt}
-\textbf{\fontsize{8}{10}\selectfont M.Sc. in Physics}\par
-{\color{accent}\fontsize{7.6}{9.5}\selectfont Pt. Ravishankar Shukla Univ.}\par
-{\color{muted}\fontsize{7.4}{9}\selectfont Raipur, India | 2015--2017}\par
-\vspace{3pt}
-\textbf{\fontsize{8}{10}\selectfont B.Sc. Physics, CS \& Math}\par
-{\color{accent}\fontsize{7.6}{9.5}\selectfont St. Thomas College}\par
-{\color{muted}\fontsize{7.4}{9}\selectfont Bhilai, India | 2012--2015}\par
+\section*{Education}
+\textbf{\fontsize{8.6}{10.4}\selectfont Ph.D. in Astrophysics}\par
+{\fontsize{8.2}{10}\selectfont Universidad de Chile}\par
+{\color{muted}\fontsize{7.8}{9.6}\selectfont Santiago, Chile | 2019--2024}\par
+{\itshape\fontsize{7.8}{9.6}\selectfont ANID National Fellowship Recipient}\par
+\vspace{4pt}
+\textbf{\fontsize{8.6}{10.4}\selectfont M.Sc. in Physics}\par
+{\fontsize{8.2}{10}\selectfont Pt. Ravishankar Shukla Univ.}\par
+{\color{muted}\fontsize{7.8}{9.6}\selectfont Raipur, India | 2015--2017}\par
+\vspace{4pt}
+\textbf{\fontsize{8.6}{10.4}\selectfont B.Sc. Physics, CS \& Math}\par
+{\fontsize{8.2}{10}\selectfont St. Thomas College}\par
+{\color{muted}\fontsize{7.8}{9.6}\selectfont Bhilai, India | 2012--2015}\par
 
-\sidehead{Awards}
-\textbf{\fontsize{8}{10}\selectfont ANID PhD Fellowship}\par
-{\color{muted}\fontsize{7.4}{9}\selectfont National Research \& Development Agency, Chile | 2019--2024}\par
+\section*{Awards}
+\textbf{\fontsize{8.6}{10.4}\selectfont ANID PhD Fellowship}\par
+{\color{muted}\fontsize{7.8}{9.6}\selectfont National Research \& Development Agency, Chile | 2019--2024}\par
 
-\sidehead{Languages}
-{\fontsize{7.6}{10}\selectfont English (Fluent)\\Hindi (Native)\\Spanish (Intermediate)}
+\section*{Languages}
+{\fontsize{8.2}{11}\selectfont English (Fluent)\\Hindi (Native)\\Spanish (Intermediate)}
 
 \end{paracol}
 
